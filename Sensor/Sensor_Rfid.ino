@@ -2,7 +2,7 @@
 //sck -> 13
 //mosi -> 11
 //miso -> 12
-//rst -> 19
+//rst -> 9
 // vcc -> 3.3v
 // gnd -> gnd
 
