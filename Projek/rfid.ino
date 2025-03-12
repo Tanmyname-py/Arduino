@@ -40,9 +40,6 @@ void setup()
   pinMode(LED_R, OUTPUT);
   pinMode(BUZZER, OUTPUT);
   noTone(BUZZER);
-  // display.setTextSize(1);
-  // display.setTextColor(WHITE);
-  // display.setCursor(20,28);
   display.setTextSize(1);
   display.setTextColor(WHITE);
   display.setCursor(20,28);
