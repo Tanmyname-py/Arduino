@@ -1,16 +1,17 @@
-//sda -> 10
-//sck -> 13
-//mosi -> 11
-//miso -> 12
-//rst -> 9
-// vcc -> 3.3v//sda -> 10
-//sck -> 13
-//mosi -> 11
-//miso -> 12
-//rst -> 9
-// vcc -> 3.3v
-// gnd -> gnd
-// gnd -> gnd
+/* 
+ sda -> 10
+ sck -> 13
+ mosi -> 11
+ miso -> 12
+ rst -> 9
+ vcc -> 3.3v//sda -> 10
+ sck -> 13
+ mosi -> 11
+ miso -> 12
+ rst -> 9
+ vcc -> 3.3v
+ gnd -> gnd
+ gnd -> gnd */
 #include <SPI.h>
 #include <MFRC522.h>
 #include <Wire.h> 
