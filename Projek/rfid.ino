@@ -16,6 +16,7 @@
 #include <Wire.h> 
 #include <Adafruit_GFX.h> 
 #include <Adafruit_SSD1306.h>
+#include <Servo.h>
 #define Lebar_Screen 128
 #define Tinggi_Screen 64
 #define SS_PIN 10
@@ -25,9 +26,11 @@
 #define BUZZER 3 //deklarasi pin buzzer
 Adafruit_SSD1306 display(Lebar_Screen,Tinggi_Screen,&Wire,-1);
 MFRC522 mfrc522(SS_PIN, RST_PIN);   // membuat inisiasi MFRC522
+Servo myservo;
 void setup() 
 {
   display.begin(SSD1306_SWITCHCAPVCC,0x3c);
+  myservo.attach(6);
   delay(2000);
   display.clearDisplay();
   Serial.begin(9600);   // membuka komunikasi serial 
@@ -37,6 +40,9 @@ void setup()
   pinMode(LED_R, OUTPUT);
   pinMode(BUZZER, OUTPUT);
   noTone(BUZZER);
+  // display.setTextSize(1);
+  // display.setTextColor(WHITE);
+  // display.setCursor(20,28);
   display.setTextSize(1);
   display.setTextColor(WHITE);
   display.setCursor(20,28);
@@ -49,12 +55,16 @@ void setup()
 }
 void loop() 
 {
+  myservo.write(0);
+  noTone(BUZZER);
   display.setTextSize(1);
   display.setTextColor(WHITE);
   display.setCursor(20,28);
   display.println("Scan kartu anda ");
   display.display();
   display.clearDisplay();
+  digitalWrite(LED_G,LOW);
+  digitalWrite(LED_R, LOW);
   if ( ! mfrc522.PICC_IsNewCardPresent())   // mencari kartu baru
   {
     return;
@@ -78,6 +88,7 @@ void loop()
   content.toUpperCase();
   if (content.substring(1) == "A3 35 87 28") //sesuaikan dengan uid tag dari kartu
   {
+    myservo.write(90);
     display.setTextSize(1);
     display.setTextColor(WHITE);
     display.setCursor(20,28);
@@ -93,8 +104,10 @@ void loop()
     noTone(BUZZER);
     delay(1000);
   }
- 
  else {
+    myservo.write(0);
+    digitalWrite(LED_R,HIGH);
+    tone(BUZZER,1000);
     display.setTextSize(1);
     display.setTextColor(WHITE);
     display.setCursor(20,28);
@@ -102,5 +115,6 @@ void loop()
     display.display();
     display.clearDisplay();
     Serial.println(" Akses Ditolak! ");
+    delay(1000);
  }
 }
