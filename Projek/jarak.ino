@@ -1,3 +1,9 @@
+/*
+ D1 -> SCL
+ D2 -> SDA
+ D5 -> TRIG
+ D6 -> ECHO
+ */
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
