@@ -1,10 +1,23 @@
+/*                                   *****************************************************************************
+Program kontrol lampu dengan bot telegram 
+Sesuaikan WIFI SSID dan PASWORD dengan wifi anda 
+Ambil bot token di BotFather 
+Created by @Tan
+Source https://github.com/Tanmyname-py/Arduino/tree/main/Projek
+*****************************************************************************
+Relay -> ESP8266
+Gnd   -> G
+Vcc   -> 3v3
+In    -> D1 GPIO 5
+*****************************************************************************
+*/
 #include "ESP8266WiFi.h"
 #include "WiFiClientSecure.h"
 #include "UniversalTelegramBot.h"
 #define Relay 5
-#define WIFI_SSID "Beskekot"
-#define WIFI_PASSWORD  "admin123"
-#define BOT_TOKEN  "7494412283:AAFZIhaBzTPF-3Ln8DHKs9PXJNXLhFq_gsA"
+#define WIFI_SSID ""
+#define WIFI_PASSWORD  ""
+#define BOT_TOKEN  ""
 const unsigned long BOT_MTBS = 1000; // mean time between scan messages
 
 X509List cert(TELEGRAM_CERTIFICATE_ROOT);
